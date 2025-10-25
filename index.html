@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Logistic Regression Practice Quiz</title>
+  <meta name="description" content="Self-paced practice quiz for Logistic Regression: concepts, math, and intuition." />
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Chart.js for the sigmoid visual (optional but helpful) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <h1>Logistic Regression Practice Quiz</h1>
+    <p class="subtitle">Scroll through the questions. Click “Reveal answer” to check yourself—no submissions needed.</p>
+  </header>
+
+  <main class="container">
+    <!-- Q1: Count TPs at a threshold -->
+    <section class="card question" id="q1">
+      <h2>1) Count true positives at a given threshold</h2>
+      <p>
+        Below is a small binary classification set with predicted probabilities (p̂) and true labels (y). Using the decision rule
+        “predict 1 if p̂ ≥ τ, else 0” with threshold τ = <strong>0.60</strong>, how many <em>true positives</em> are there?
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th style="text-align:left">ID</th>
+            <th style="text-align:right">p̂</th>
+            <th style="text-align:right">y</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td style="text-align:right">0.90</td><td style="text-align:right">1</td></tr>
+          <tr><td>2</td><td style="text-align:right">0.70</td><td style="text-align:right">0</td></tr>
+          <tr><td>3</td><td style="text-align:right">0.65</td><td style="text-align:right">1</td></tr>
+          <tr><td>4</td><td style="text-align:right">0.40</td><td style="text-align:right">0</td></tr>
+          <tr><td>5</td><td style="text-align:right">0.20</td><td style="text-align:right">1</td></tr>
+          <tr><td>6</td><td style="text-align:right">0.80</td><td style="text-align:right">1</td></tr>
+          <tr><td>7</td><td style="text-align:right">0.55</td><td style="text-align:right">0</td></tr>
+          <tr><td>8</td><td style="text-align:right">0.30</td><td style="text-align:right">0</td></tr>
+        </tbody>
+      </table>
+      <button class="reveal-btn" aria-expanded="false" aria-controls="a1">Reveal answer</button>
+      <div id="a1" class="answer" hidden>
+        <p>
+          <strong>3 true positives</strong> — IDs <strong>1</strong> (0.90, y=1), <strong>3</strong> (0.65, y=1), and <strong>6</strong> (0.80, y=1) are predicted 1 at τ = 0.60 and have y = 1.
+        </p>
+      </div>
+    </section>
+
+    <!-- Q2: Count true negatives at a threshold -->
+    <section class="card question" id="q2">
+      <h2>2) Count true negatives at a given threshold</h2>
+      <p>
+        Using the rule “predict 1 if p̂ ≥ τ, else 0” with τ = <strong>0.50</strong>, how many <em>true negatives</em> are there?
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th style="text-align:left">ID</th>
+            <th style="text-align:right">p̂</th>
+            <th style="text-align:right">y</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td style="text-align:right">0.15</td><td style="text-align:right">0</td></tr>
+          <tr><td>2</td><td style="text-align:right">0.40</td><td style="text-align:right">0</td></tr>
+          <tr><td>3</td><td style="text-align:right">0.55</td><td style="text-align:right">1</td></tr>
+          <tr><td>4</td><td style="text-align:right">0.60</td><td style="text-align:right">0</td></tr>
+          <tr><td>5</td><td style="text-align:right">0.05</td><td style="text-align:right">0</td></tr>
+          <tr><td>6</td><td style="text-align:right">0.80</td><td style="text-align:right">1</td></tr>
+          <tr><td>7</td><td style="text-align:right">0.49</td><td style="text-align:right">0</td></tr>
+          <tr><td>8</td><td style="text-align:right">0.30</td><td style="text-align:right">1</td></tr>
+        </tbody>
+      </table>
+      <button class="reveal-btn" aria-expanded="false" aria-controls="a2">Reveal answer</button>
+      <div id="a2" class="answer" hidden>
+        <p>
+          <strong>4 true negatives</strong> — IDs <strong>1</strong>, <strong>2</strong>, <strong>5</strong>, and <strong>7</strong> are predicted 0 at τ = 0.50 and have y = 0.
+        </p>
+      </div>
+    </section>
+
+    <!-- Q3: Count false positives at a threshold -->
+    <section class="card question" id="q3">
+      <h2>3) Count false positives at a given threshold</h2>
+      <p>
+        Using the rule “predict 1 if p̂ ≥ τ, else 0” with τ = <strong>0.65</strong>, how many <em>false positives</em> are there?
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th style="text-align:left">ID</th>
+            <th style="text-align:right">p̂</th>
+            <th style="text-align:right">y</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td style="text-align:right">0.70</td><td style="text-align:right">0</td></tr>
+          <tr><td>2</td><td style="text-align:right">0.90</td><td style="text-align:right">1</td></tr>
+          <tr><td>3</td><td style="text-align:right">0.66</td><td style="text-align:right">0</td></tr>
+          <tr><td>4</td><td style="text-align:right">0.20</td><td style="text-align:right">0</td></tr>
+          <tr><td>5</td><td style="text-align:right">0.80</td><td style="text-align:right">0</td></tr>
+          <tr><td>6</td><td style="text-align:right">0.64</td><td style="text-align:right">1</td></tr>
+          <tr><td>7</td><td style="text-align:right">0.10</td><td style="text-align:right">0</td></tr>
+          <tr><td>8</td><td style="text-align:right">0.75</td><td style="text-align:right">1</td></tr>
+        </tbody>
+      </table>
+      <button class="reveal-btn" aria-expanded="false" aria-controls="a3">Reveal answer</button>
+      <div id="a3" class="answer" hidden>
+        <p>
+          <strong>3 false positives</strong> — IDs <strong>1</strong>, <strong>3</strong>, and <strong>5</strong> are predicted 1 at τ = 0.65 but have y = 0.
+        </p>
+      </div>
+    </section>
+
+    <!-- Q4: Count false negatives at a threshold -->
+    <section class="card question" id="q4">
+      <h2>4) Count false negatives at a given threshold</h2>
+      <p>
+        Using the rule “predict 1 if p̂ ≥ τ, else 0” with τ = <strong>0.55</strong>, how many <em>false negatives</em> are there?
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th style="text-align:left">ID</th>
+            <th style="text-align:right">p̂</th>
+            <th style="text-align:right">y</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td style="text-align:right">0.50</td><td style="text-align:right">1</td></tr>
+          <tr><td>2</td><td style="text-align:right">0.90</td><td style="text-align:right">1</td></tr>
+          <tr><td>3</td><td style="text-align:right">0.52</td><td style="text-align:right">1</td></tr>
+          <tr><td>4</td><td style="text-align:right">0.10</td><td style="text-align:right">0</td></tr>
+          <tr><td>5</td><td style="text-align:right">0.40</td><td style="text-align:right">1</td></tr>
+          <tr><td>6</td><td style="text-align:right">0.70</td><td style="text-align:right">0</td></tr>
+          <tr><td>7</td><td style="text-align:right">0.20</td><td style="text-align:right">0</td></tr>
+          <tr><td>8</td><td style="text-align:right">0.57</td><td style="text-align:right">1</td></tr>
+        </tbody>
+      </table>
+      <button class="reveal-btn" aria-expanded="false" aria-controls="a4">Reveal answer</button>
+      <div id="a4" class="answer" hidden>
+        <p>
+          <strong>3 false negatives</strong> — IDs <strong>1</strong>, <strong>3</strong>, and <strong>5</strong> are predicted 0 at τ = 0.55 but have y = 1.
+        </p>
+      </div>
+    </section>
+
+    <!-- Q5: Calculate precision at a threshold -->
+    <section class="card question" id="q5">
+      <h2>5) Calculate precision at a given threshold</h2>
+      <p>
+        Using the rule “predict 1 if p̂ ≥ τ, else 0” with τ = <strong>0.60</strong>, compute the <em>precision</em>:
+        precision = TP / (TP + FP).
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th style="text-align:left">ID</th>
+            <th style="text-align:right">p̂</th>
+            <th style="text-align:right">y</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td style="text-align:right">0.92</td><td style="text-align:right">1</td></tr>
+          <tr><td>2</td><td style="text-align:right">0.81</td><td style="text-align:right">0</td></tr>
+          <tr><td>3</td><td style="text-align:right">0.77</td><td style="text-align:right">1</td></tr>
+          <tr><td>4</td><td style="text-align:right">0.55</td><td style="text-align:right">0</td></tr>
+          <tr><td>5</td><td style="text-align:right">0.49</td><td style="text-align:right">1</td></tr>
+          <tr><td>6</td><td style="text-align:right">0.33</td><td style="text-align:right">0</td></tr>
+          <tr><td>7</td><td style="text-align:right">0.62</td><td style="text-align:right">1</td></tr>
+          <tr><td>8</td><td style="text-align:right">0.58</td><td style="text-align:right">1</td></tr>
+        </tbody>
+      </table>
+      <button class="reveal-btn" aria-expanded="false" aria-controls="a5">Reveal answer</button>
+      <div id="a5" class="answer" hidden>
+        <p>
+          Predicted positives at τ = 0.60: IDs 1, 2, 3, 7. Among these, TPs = {1, 3, 7} and FP = {2}.
+          So precision = 3 / (3 + 1) = <strong>0.75</strong>.
+        </p>
+      </div>
+    </section>
+
+    <!-- Q6: Calculate recall at a threshold -->
+    <section class="card question" id="q6">
+      <h2>6) Calculate recall at a given threshold</h2>
+      <p>
+        Using the rule “predict 1 if p̂ ≥ τ, else 0” with τ = <strong>0.55</strong>, compute the <em>recall</em>:
+        recall = TP / (TP + FN).
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th style="text-align:left">ID</th>
+            <th style="text-align:right">p̂</th>
+            <th style="text-align:right">y</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td style="text-align:right">0.90</td><td style="text-align:right">1</td></tr>
+          <tr><td>2</td><td style="text-align:right">0.80</td><td style="text-align:right">0</td></tr>
+          <tr><td>3</td><td style="text-align:right">0.60</td><td style="text-align:right">1</td></tr>
+          <tr><td>4</td><td style="text-align:right">0.40</td><td style="text-align:right">0</td></tr>
+          <tr><td>5</td><td style="text-align:right">0.30</td><td style="text-align:right">1</td></tr>
+          <tr><td>6</td><td style="text-align:right">0.55</td><td style="text-align:right">1</td></tr>
+          <tr><td>7</td><td style="text-align:right">0.20</td><td style="text-align:right">0</td></tr>
+          <tr><td>8</td><td style="text-align:right">0.70</td><td style="text-align:right">0</td></tr>
+        </tbody>
+      </table>
+      <button class="reveal-btn" aria-expanded="false" aria-controls="a6">Reveal answer</button>
+      <div id="a6" class="answer" hidden>
+        <p>
+          Predicted positives at τ = 0.55: IDs 1, 2, 3, 6, 8. Actual positives are IDs 1, 3, 5, 6.
+          Therefore TP = {1, 3, 6} and FN = {5}. Recall = 3 / (3 + 1) = <strong>0.75</strong>.
+        </p>
+      </div>
+    </section>
+
+    <!-- Q7: Calculate false positive rate (FPR) at a threshold -->
+    <section class="card question" id="q7">
+      <h2>7) Calculate false positive rate (FPR)</h2>
+      <p>
+        Using the rule “predict 1 if p̂ ≥ τ, else 0” with τ = <strong>0.60</strong>, compute the <em>false positive rate</em>:
+        FPR = FP / (FP + TN).
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th style="text-align:left">ID</th>
+            <th style="text-align:right">p̂</th>
+            <th style="text-align:right">y</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td style="text-align:right">0.72</td><td style="text-align:right">0</td></tr>
+          <tr><td>2</td><td style="text-align:right">0.65</td><td style="text-align:right">0</td></tr>
+          <tr><td>3</td><td style="text-align:right">0.80</td><td style="text-align:right">1</td></tr>
+          <tr><td>4</td><td style="text-align:right">0.40</td><td style="text-align:right">0</td></tr>
+          <tr><td>5</td><td style="text-align:right">0.55</td><td style="text-align:right">1</td></tr>
+          <tr><td>6</td><td style="text-align:right">0.20</td><td style="text-align:right">0</td></tr>
+          <tr><td>7</td><td style="text-align:right">0.90</td><td style="text-align:right">1</td></tr>
+          <tr><td>8</td><td style="text-align:right">0.10</td><td style="text-align:right">0</td></tr>
+        </tbody>
+      </table>
+      <button class="reveal-btn" aria-expanded="false" aria-controls="a7">Reveal answer</button>
+      <div id="a7" class="answer" hidden>
+        <p>
+          Actual negatives are IDs 1, 2, 4, 6, 8 (5 total). Predicted positives at τ = 0.60 include IDs 1 and 2 among those negatives → FP = 2; TN = 3 (IDs 4, 6, 8).
+          Therefore FPR = 2 / (2 + 3) = <strong>0.40</strong>.
+        </p>
+      </div>
+    </section>
+
+    <!-- Q8: Calculate true positive rate (TPR) at a threshold -->
+    <section class="card question" id="q8">
+      <h2>8) Calculate true positive rate (TPR)</h2>
+      <p>
+        Using the rule “predict 1 if p̂ ≥ τ, else 0” with τ = <strong>0.70</strong>, compute the <em>true positive rate</em> (also called recall/sensitivity):
+        TPR = TP / (TP + FN).
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th style="text-align:left">ID</th>
+            <th style="text-align:right">p̂</th>
+            <th style="text-align:right">y</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td style="text-align:right">0.92</td><td style="text-align:right">1</td></tr>
+          <tr><td>2</td><td style="text-align:right">0.88</td><td style="text-align:right">1</td></tr>
+          <tr><td>3</td><td style="text-align:right">0.74</td><td style="text-align:right">1</td></tr>
+          <tr><td>4</td><td style="text-align:right">0.69</td><td style="text-align:right">1</td></tr>
+          <tr><td>5</td><td style="text-align:right">0.55</td><td style="text-align:right">1</td></tr>
+          <tr><td>6</td><td style="text-align:right">0.80</td><td style="text-align:right">0</td></tr>
+          <tr><td>7</td><td style="text-align:right">0.20</td><td style="text-align:right">0</td></tr>
+          <tr><td>8</td><td style="text-align:right">0.30</td><td style="text-align:right">0</td></tr>
+        </tbody>
+      </table>
+      <button class="reveal-btn" aria-expanded="false" aria-controls="a8">Reveal answer</button>
+      <div id="a8" class="answer" hidden>
+        <p>
+          Actual positives are IDs 1–5 (5 total). Predicted positives at τ = 0.70: IDs 1, 2, 3, 6.
+          Therefore TP = {1, 2, 3} and FN = {4, 5}. TPR = 3 / (3 + 2) = <strong>0.60</strong>.
+        </p>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <p>Made for students—practice at your own pace.</p>
+    </footer>
+  </main>
+</body>
+</html>
